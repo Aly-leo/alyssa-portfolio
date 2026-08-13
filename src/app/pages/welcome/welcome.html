@@ -1,0 +1,43 @@
+<section class="welcome" [class.fade-out]="fading()" [class.loaded]="loaded()">
+  <div class="grid-lines"></div>
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+
+  <div class="terminal" role="region" aria-label="Séquence d'introduction">
+    <header class="terminal__head">
+      <div class="dots">
+        <span class="dot d1"></span>
+        <span class="dot d2"></span>
+        <span class="dot d3"></span>
+      </div>
+      <div class="title">alyssa@portfolio ~ zsh</div>
+      <div class="chip">v1.0.0</div>
+    </header>
+
+    <div class="terminal__body">
+      @for (line of lines; track line.prompt; let i = $index) {
+        <div class="line" [class.active]="currentLine() === i" [class.done]="currentLine() > i">
+          <span class="prompt">{{ line.prompt }}</span>
+          <span class="text">
+            {{ typed()[i] }}<span
+              class="caret"
+              [class.blink]="showCursor()"
+              [class.hidden]="currentLine() !== i && !(currentLine() >= lines.length && i === lines.length - 1)"
+            >▍</span>
+          </span>
+        </div>
+      }
+      @if (currentLine() >= lines.length) {
+        <div class="line ready">
+          <span class="prompt">></span>
+          <span class="text ok">■ portfolio prêt — redirection en cours…</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <button type="button" class="skip" (click)="skip()" aria-label="Passer l'intro">
+    <span>skip intro</span>
+    <span class="arrow">→</span>
+  </button>
+</section>

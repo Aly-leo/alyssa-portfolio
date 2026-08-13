@@ -1,0 +1,224 @@
+/* =========================================================
+   Portfolio Alyssa Nkolo — Design System
+   Palette minimaliste, accents violets futuristes.
+   Support light (défaut) + dark.
+   ========================================================= */
+
+/* ---- LIGHT (par défaut) ---- */
+:root {
+  --bg-0: #f8f7fb;
+  --bg-1: #ffffff;
+  --bg-2: #f2f0f7;
+  --bg-3: #ecebf3;
+  --surface: rgba(255, 255, 255, 0.75);
+  --surface-hover: rgba(139, 92, 246, 0.06);
+  --border: rgba(20, 20, 40, 0.08);
+  --border-strong: rgba(20, 20, 40, 0.14);
+
+  --text: #0f0f18;
+  --text-muted: #4a4a60;
+  --text-dim: #7d7d94;
+  --text-inverted: #ffffff;
+
+  --violet: #7c3aed;
+  --violet-bright: #8b5cf6;
+  --violet-deep: #5b21b6;
+  --violet-glow: rgba(124, 58, 237, 0.28);
+  --violet-soft: rgba(124, 58, 237, 0.10);
+
+  --grad-accent: linear-gradient(135deg, #a78bfa 0%, #7c3aed 45%, #5b21b6 100%);
+  --grad-text: linear-gradient(135deg, #0f0f18 0%, #5b21b6 55%, #7c3aed 100%);
+  --grad-line: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.55), transparent);
+
+  --nav-bg: rgba(255, 255, 255, 0.55);
+  --nav-border: rgba(20, 20, 40, 0.08);
+  --nav-shadow: 0 8px 30px rgba(20, 20, 60, 0.06);
+
+  --shadow-soft: 0 12px 40px rgba(20, 20, 60, 0.08);
+  --shadow-violet: 0 15px 45px rgba(124, 58, 237, 0.22);
+  --shadow-card: 0 8px 30px rgba(20, 20, 60, 0.06);
+
+  --page-bg-img:
+    radial-gradient(1200px 700px at 15% -10%, rgba(167, 139, 250, 0.18), transparent 60%),
+    radial-gradient(900px 600px at 90% 20%, rgba(124, 58, 237, 0.10), transparent 55%),
+    radial-gradient(700px 500px at 50% 110%, rgba(167, 139, 250, 0.14), transparent 60%);
+
+  --font-sans: 'Space Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+
+  color-scheme: light;
+}
+
+/* ---- DARK ---- */
+:root[data-theme='dark'] {
+  --bg-0: #060608;
+  --bg-1: #0b0b12;
+  --bg-2: #12121c;
+  --bg-3: #1a1a26;
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  --text: #f5f5fa;
+  --text-muted: #a4a4b8;
+  --text-dim: #6a6a80;
+  --text-inverted: #0f0f18;
+
+  --violet: #8b5cf6;
+  --violet-bright: #a78bfa;
+  --violet-deep: #6d28d9;
+  --violet-glow: rgba(139, 92, 246, 0.45);
+  --violet-soft: rgba(139, 92, 246, 0.12);
+
+  --grad-accent: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 45%, #6d28d9 100%);
+  --grad-text: linear-gradient(135deg, #ffffff 0%, #c4b5fd 60%, #8b5cf6 100%);
+  --grad-line: linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.6), transparent);
+
+  --nav-bg: rgba(11, 11, 18, 0.55);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --nav-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+
+  --shadow-soft: 0 8px 40px rgba(0, 0, 0, 0.35);
+  --shadow-violet: 0 10px 60px rgba(139, 92, 246, 0.18);
+  --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.4);
+
+  --page-bg-img:
+    radial-gradient(1200px 700px at 15% -10%, rgba(139, 92, 246, 0.12), transparent 60%),
+    radial-gradient(900px 600px at 90% 20%, rgba(109, 40, 217, 0.08), transparent 55%),
+    radial-gradient(700px 500px at 50% 110%, rgba(167, 139, 250, 0.08), transparent 60%);
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-0);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  background-image: var(--page-bg-img);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  color: var(--text);
+}
+
+p { margin: 0 0 1em; color: var(--text-muted); }
+
+a {
+  color: var(--violet);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+:root[data-theme='dark'] a { color: var(--violet-bright); }
+a:hover { color: var(--text); }
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+::selection { background: var(--violet); color: white; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--bg-1); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--violet-deep), var(--violet));
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--violet-bright); }
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+:root[data-theme='dark'] .grid-lines {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* ========== Reveal on scroll (morph léger) ========== */
+.reveal {
+  --reveal-delay: 0ms;
+  opacity: 0;
+  transform: translate3d(0, 24px, 0);
+  filter: blur(6px);
+  will-change: opacity, transform, filter;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+    filter 0.6s ease var(--reveal-delay);
+}
+.reveal--down { transform: translate3d(0, -24px, 0); }
+.reveal--left { transform: translate3d(-30px, 0, 0); }
+.reveal--right { transform: translate3d(30px, 0, 0); }
+.reveal--scale { transform: scale(0.94); }
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  filter: blur(0);
+  will-change: auto;
+}
+
+/* Priorité sur les transitions locales pour ne pas casser le morph */
+.reveal, .reveal.is-visible {
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay),
+    filter 0.6s ease var(--reveal-delay) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  html, body { font-size: 15px; }
+}

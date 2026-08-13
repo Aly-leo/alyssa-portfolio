@@ -1,0 +1,379 @@
+<div class="home">
+  <!-- ============= NAV (effet glace) ============= -->
+  <nav class="nav" [class.is-open]="menuOpen()">
+    <div class="container nav__row">
+      <a class="brand" href="#hero" (click)="scrollTo('hero'); $event.preventDefault()">
+        Alyssa Nkolo
+      </a>
+      <div class="nav__links">
+        <a (click)="scrollTo('about'); $event.preventDefault()" href="#about">À propos</a>
+        <a (click)="scrollTo('stack'); $event.preventDefault()" href="#stack">Stack</a>
+        <a (click)="scrollTo('projects'); $event.preventDefault()" href="#projects">Projets</a>
+        <a (click)="scrollTo('wistem'); $event.preventDefault()" href="#wistem">WISTEM</a>
+        <a (click)="scrollTo('content'); $event.preventDefault()" href="#content">Contenu</a>
+        <a (click)="scrollTo('contact'); $event.preventDefault()" href="#contact">Contact</a>
+      </div>
+      <div class="nav__end">
+        <button
+          type="button"
+          class="theme-toggle"
+          (click)="toggleTheme()"
+          [attr.aria-label]="theme() === 'light' ? 'Passer en mode sombre' : 'Passer en mode clair'"
+          [title]="theme() === 'light' ? 'Mode sombre' : 'Mode clair'"
+        >
+          @if (theme() === 'light') {
+            <app-social-icon name="moon" style="width: 16px; height: 16px;"></app-social-icon>
+          } @else {
+            <app-social-icon name="sun" style="width: 16px; height: 16px;"></app-social-icon>
+          }
+        </button>
+        <a class="cta" href="mailto:zamoalyssa@gmail.com">
+          <span>me contacter</span><span class="arrow">→</span>
+        </a>
+        <button
+          type="button"
+          class="burger"
+          [class.is-active]="menuOpen()"
+          (click)="toggleMenu()"
+          [attr.aria-label]="menuOpen() ? 'Fermer le menu' : 'Ouvrir le menu'"
+          [attr.aria-expanded]="menuOpen()"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============= MOBILE DRAWER ============= -->
+  <div class="drawer" [class.is-open]="menuOpen()" (click)="closeMenu()">
+    <div class="drawer__panel" (click)="$event.stopPropagation()">
+      <a class="drawer__link" (click)="scrollTo('about'); $event.preventDefault()" href="#about">À propos</a>
+      <a class="drawer__link" (click)="scrollTo('stack'); $event.preventDefault()" href="#stack">Stack</a>
+      <a class="drawer__link" (click)="scrollTo('projects'); $event.preventDefault()" href="#projects">Projets</a>
+      <a class="drawer__link" (click)="scrollTo('wistem'); $event.preventDefault()" href="#wistem">WISTEM</a>
+      <a class="drawer__link" (click)="scrollTo('content'); $event.preventDefault()" href="#content">Contenu</a>
+      <a class="drawer__link" (click)="scrollTo('contact'); $event.preventDefault()" href="#contact">Contact</a>
+      <a class="drawer__cta" href="mailto:zamoalyssa@gmail.com" (click)="closeMenu()">
+        <span>Me contacter</span><span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============= HERO (style LinkHub) ============= -->
+  <section id="hero" class="hero">
+    <div class="grid-lines"></div>
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
+
+    <div class="container hero__grid">
+      <!-- Photo + icônes flottantes -->
+      <div class="hero__photo-wrap">
+        <div class="photo-orbit">
+          @for (ic of floatingIcons; track ic.label) {
+            <span
+              class="float-icon"
+              [style.top]="ic.top || null"
+              [style.bottom]="ic.bottom || null"
+              [style.left]="ic.left || null"
+              [style.right]="ic.right || null"
+              [style.animation-delay]="ic.delay"
+              [style.--icon-color]="ic.color"
+            >
+              {{ ic.label }}
+            </span>
+          }
+          <div class="photo">
+            <!--
+              👇 IMAGE À AJOUTER ICI — Photo de profil (hero)
+              Fichier :  public/img/alyssa.jpg
+              Pour la remplacer, écrase ce fichier (garde le même nom)
+              OU change le src ci-dessous, ex : src="img/nouvelle-photo.png"
+            -->
+            <img src="img/alyssa.jpg" alt="Alyssa Nkolo — développeuse full-stack" />
+            <div class="photo__ring"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloc texte -->
+      <div class="hero__text">
+        <div class="hero__badge">
+          <span class="pulse"></span>
+          Disponible pour de nouveaux projets
+        </div>
+
+        <h1 class="hero__title">
+          <span class="grad">Alyssa Nkolo</span>
+        </h1>
+        <p class="hero__role">
+          Développeuse — <span class="mais">mais pas que.</span>
+        </p>
+
+        <p class="hero__sub">
+          Je code, je conçois, je documente. Full-stack en apprentissage constant —
+          <b>Angular</b>, <b>PHP</b>, <b>Java / Spring Boot</b>, <b>Python</b>, <b>C#</b> —
+          et créatrice de contenu tech en français. Engagée avec <b>WISTEM Cameroon</b>
+          pour la présence des femmes dans la tech.
+        </p>
+
+        <div class="hero__socials">
+          @for (s of socials; track s.name) {
+            <a
+              class="social"
+              [href]="s.url"
+              target="_blank"
+              rel="noopener"
+              [attr.aria-label]="s.name + ' — ' + s.handle"
+              [title]="s.name + ' — ' + s.handle"
+            >
+              <app-social-icon [name]="s.icon" style="width: 18px; height: 18px;"></app-social-icon>
+              <span>{{ s.name }}</span>
+            </a>
+          }
+        </div>
+
+        <div class="hero__cta">
+          <a class="btn btn--primary" (click)="scrollTo('projects'); $event.preventDefault()" href="#projects">
+            Voir mes projets<span class="arrow">→</span>
+          </a>
+          <a class="btn btn--ghost" (click)="scrollTo('contact'); $event.preventDefault()" href="#contact">
+            Discutons
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= À PROPOS ============= -->
+  <section id="about" class="section">
+    <div class="container about">
+      <div class="section__label" appReveal><span class="dot"></span> 01 — À propos</div>
+      <div class="about__grid">
+        <div appReveal appRevealFrom="left">
+          <h2>Développeuse, apprenante, créatrice.</h2>
+          <p>
+            Je construis des interfaces qui allient <b>performance</b>, <b>clarté</b>
+            et <b>émotion</b>. Ma curiosité m'a menée d'Angular à PHP, de Java à Python,
+            de C à C# — parce que chaque langage change la façon de penser le code.
+          </p>
+          <p>
+            En parallèle du code, je crée du contenu tech en français et je m'engage
+            auprès de <b>WISTEM Cameroon</b> pour rendre la tech plus inclusive.
+          </p>
+        </div>
+        <ul class="about__list" [appReveal]="120" appRevealFrom="right">
+          <li><span class="k">Basée à</span><span class="v">Douala, Cameroun 🇨🇲</span></li>
+          <li><span class="k">Métier</span><span class="v">Dév. full-stack · créatrice de contenu</span></li>
+          <li><span class="k">Engagement</span><span class="v">WISTEM · AI Hunters</span></li>
+          <li><span class="k">Disponible</span><span class="v">Missions · freelances · collabs</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= STACK ============= -->
+  <section id="stack" class="section section--muted">
+    <div class="container">
+      <div class="section__label" appReveal><span class="dot"></span> 02 — Stack technique</div>
+      <h2 class="section__title" [appReveal]="80">Un stack polyglotte, pas juste Angular.</h2>
+      <p class="section__sub" [appReveal]="140">
+        Formée sur le front comme sur le back. Chaque techno ci-dessous, je l'ai utilisée
+        dans un projet réel — pas juste survolée.
+      </p>
+
+      <div class="stack">
+        @for (s of stack; track s.name; let i = $index) {
+          <div class="tech" [style.--tech-color]="s.color" [appReveal]="i * 40" appRevealFrom="scale">
+            <div class="tech__icon">{{ s.icon }}</div>
+            <div>
+              <div class="tech__name">{{ s.name }}</div>
+              <div class="tech__cat">{{ s.category }}</div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= PROJETS ============= -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section__label" appReveal><span class="dot"></span> 03 — Projets</div>
+      <h2 class="section__title" [appReveal]="80">Ce que j'ai construit.</h2>
+      <p class="section__sub" [appReveal]="140">
+        Une sélection de projets personnels, académiques et de formation — de la vitrine
+        Angular à l'ERP en C#, en passant par mon LinkHub Next.js.
+      </p>
+
+      <div class="projects__grid">
+        <!--
+          👇 IMAGES À AJOUTER ICI — Captures d'écran des projets
+          Chaque carte affiche l'image définie dans :
+            src/app/data/projects.ts  →  tableau PROJECTS  →  champ image
+          Tant que  image: undefined  →  un dégradé placeholder s'affiche.
+        -->
+        @for (p of projects; track p.id; let i = $index) {
+          <article class="pcard" [appReveal]="i * 80">
+            <div class="pcard__media" [style.background]="p.imageGradient">
+              @if (p.image) {
+                <img [src]="p.image" [alt]="p.imageAlt || p.title" />
+              } @else {
+                <div class="pcard__placeholder">
+                  <span>{{ p.title }}</span>
+                  <em>capture à venir</em>
+                </div>
+              }
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__subtitle">{{ p.subtitle }}</div>
+              <h3 class="pcard__title">{{ p.title }}</h3>
+              <p class="pcard__desc">{{ p.description }}</p>
+              <div class="pcard__langs">
+                @for (l of p.languages; track l) {
+                  <span class="chip">{{ l }}</span>
+                }
+              </div>
+              <a
+                class="pcard__btn"
+                [href]="p.link"
+                [attr.target]="p.link !== '#' ? '_blank' : null"
+                [attr.rel]="p.link !== '#' ? 'noopener' : null"
+                [class.disabled]="p.link === '#'"
+              >
+                <span>{{ p.linkLabel }}</span>
+                <app-social-icon name="external" style="width: 14px; height: 14px;"></app-social-icon>
+              </a>
+            </div>
+          </article>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= WISTEM ============= -->
+  <section id="wistem" class="section section--muted">
+    <div class="container">
+      <div class="section__label" appReveal><span class="dot"></span> 04 — Engagement WISTEM</div>
+
+      <div class="wistem">
+        <div class="wistem__head">
+          <div>
+            <h2 class="section__title" [appReveal]="80">{{ wistem.name }}</h2>
+            <p class="wistem__tagline">{{ wistem.tagline }}</p>
+          </div>
+          <div class="wistem__values">
+            @for (v of wistem.values; track v) {
+              <span class="chip chip--accent">{{ v }}</span>
+            }
+          </div>
+        </div>
+
+        <p class="wistem__desc">{{ wistem.description }}</p>
+
+        <!--
+          👇 IMAGES À AJOUTER ICI — Photos WISTEM (4 slots)
+          Chaque slot affiche l'image définie dans :
+            src/app/data/projects.ts  →  WISTEM.photos  →  champ image
+          Tant que  image: undefined  →  dégradé + label "photo à insérer".
+        -->
+        <div class="wistem__gallery">
+          @for (ph of wistem.photos; track ph.alt; let i = $index) {
+            <div
+              class="photo-slot"
+              [appReveal]="i * 90"
+              appRevealFrom="scale"
+              [style.background]="ph.image ? 'transparent' : ph.gradient"
+              [attr.aria-label]="ph.alt"
+              [title]="ph.alt"
+            >
+              @if (ph.image) {
+                <img [src]="ph.image" [alt]="ph.alt" />
+              }
+              <span class="photo-slot__caption">{{ ph.alt }}</span>
+              @if (!ph.image) {
+                <span class="photo-slot__ph">photo à insérer</span>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="wistem__socials">
+          @for (s of wistem.socials; track s.name) {
+            <a class="social social--large" [href]="s.url" target="_blank" rel="noopener">
+              <app-social-icon [name]="s.icon" style="width: 18px; height: 18px;"></app-social-icon>
+              <span>Suivre sur {{ s.name }}</span>
+              <span class="arrow">→</span>
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= CONTENT CREATION ============= -->
+  <section id="content" class="section">
+    <div class="container">
+      <div class="section__label" appReveal><span class="dot"></span> 05 — Création de contenu tech</div>
+      <h2 class="section__title" [appReveal]="80">Je code, je partage.</h2>
+      <p class="section__sub" [appReveal]="140">
+        Tutoriels, retours d'expérience et coulisses de mes projets — retrouve-moi sur mes
+        plateformes préférées.
+      </p>
+
+      <div class="platforms">
+        @for (p of platforms; track p.name; let i = $index) {
+          <a class="plat" [href]="p.url" target="_blank" rel="noopener" [style.--plat-color]="p.color" [appReveal]="i * 70" appRevealFrom="left">
+            <div class="plat__icon">
+              <app-social-icon [name]="p.icon" style="width: 22px; height: 22px;"></app-social-icon>
+            </div>
+            <div class="plat__body">
+              <div class="plat__row">
+                <h3>{{ p.name }}</h3>
+                <span class="plat__handle">{{ p.handle }}</span>
+              </div>
+              <p>{{ p.description }}</p>
+            </div>
+            <div class="plat__arrow">→</div>
+          </a>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= CONTACT ============= -->
+  <section id="contact" class="section section--muted">
+    <div class="container contact">
+      <div class="section__label" appReveal><span class="dot"></span> 06 — Contact</div>
+      <h2 class="section__title" [appReveal]="80">Un projet, une envie de collaborer&nbsp;?</h2>
+      <p class="section__sub" [appReveal]="140">
+        Missions, freelances, prises de parole, collabs contenu — je réponds sous 24h.
+      </p>
+
+      <div class="contact__actions">
+        <a class="btn btn--primary big" href="mailto:zamoalyssa@gmail.com">
+          zamoalyssa&#64;gmail.com<span class="arrow">→</span>
+        </a>
+        <div class="contact__socials">
+          @for (s of socials; track s.name) {
+            <a [href]="s.url" target="_blank" rel="noopener" class="mini">
+              <app-social-icon [name]="s.icon" style="width: 16px; height: 16px;"></app-social-icon>
+              <span>{{ s.name }}</span>
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============= FOOTER ============= -->
+  <footer class="footer">
+    <div class="container footer__row">
+      <div>© {{ currentYear }} Alyssa Nkolo — Portfolio construit avec Angular.</div>
+      <div class="footer__meta">
+        <span class="ping"></span> système opérationnel
+      </div>
+    </div>
+  </footer>
+</div>
