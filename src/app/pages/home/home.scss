@@ -489,6 +489,8 @@
 .section {
   padding: 110px 0;
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
 
   &--muted {
     background: linear-gradient(180deg, transparent, var(--violet-soft) 30%, transparent);

@@ -91,7 +91,14 @@
               Pour la remplacer, écrase ce fichier (garde le même nom)
               OU change le src ci-dessous, ex : src="img/nouvelle-photo.png"
             -->
-            <img src="img/alyssa.jpg" alt="Alyssa Nkolo — développeuse full-stack" />
+            <img
+              src="img/alyssa.jpg"
+              alt="Alyssa Nkolo — développeuse full-stack"
+              width="720"
+              height="1080"
+              fetchpriority="high"
+              decoding="async"
+            />
             <div class="photo__ring"></div>
           </div>
         </div>
@@ -218,7 +225,7 @@
           <article class="pcard" [appReveal]="i * 80">
             <div class="pcard__media" [style.background]="p.imageGradient">
               @if (p.image) {
-                <img [src]="p.image" [alt]="p.imageAlt || p.title" />
+                <img [src]="p.image" [alt]="p.imageAlt || p.title" loading="lazy" decoding="async" />
               } @else {
                 <div class="pcard__placeholder">
                   <span>{{ p.title }}</span>
@@ -289,7 +296,7 @@
               [title]="ph.alt"
             >
               @if (ph.image) {
-                <img [src]="ph.image" [alt]="ph.alt" />
+                <img [src]="ph.image" [alt]="ph.alt" loading="lazy" decoding="async" />
               }
               <span class="photo-slot__caption">{{ ph.alt }}</span>
               @if (!ph.image) {
