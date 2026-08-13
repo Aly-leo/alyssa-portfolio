@@ -1,59 +1,140 @@
-# Portfolio
+<div align="center">
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.16.
+# Portfolio — Alyssa Nkolo
 
-## Development server
+Portfolio personnel présentant mes projets de développement, mon stack technique,
+mon engagement avec **WISTEM Cameroon** et ma création de contenu tech.
 
-To start a local development server, run:
+**Développeuse — mais pas que.**
+
+[![Angular](https://img.shields.io/badge/Angular-21-DD0031?style=flat-square&logo=angular&logoColor=white)](https://angular.dev)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
+[![SCSS](https://img.shields.io/badge/SCSS-CF649A?style=flat-square&logo=sass&logoColor=white)](https://sass-lang.com)
+[![Vercel](https://img.shields.io/badge/Vercel-Deploy-000000?style=flat-square&logo=vercel&logoColor=white)](https://alyssa-portfolio-seven.vercel.app/)
+
+### [Voir la démo en ligne →](https://alyssa-portfolio-seven.vercel.app/)
+
+</div>
+
+---
+
+## Aperçu
+
+![Aperçu du portfolio](docs/screenshot.png)
+
+---
+
+## Fonctionnalités
+
+-  **Splash screen animé** — effet machine à écrire à l'ouverture, faux terminal
+-  **Mode clair / sombre** — bascule persistée, thème clair par défaut
+-  **Design futuriste minimaliste** — accents violets, navbar en verre dépoli
+-  **Responsive complet** — menu hamburger, drawer mobile animé
+-  **Transitions morph au scroll** — reveal léger via `IntersectionObserver`
+-  **Section engagement WISTEM** — description, galerie et liens communauté
+-  **Section création de contenu** — TikTok, LinkedIn, Instagram, AI Hunters
+
+---
+
+## Stack technique
+
+| Domaine | Technologies |
+|---|---|
+| **Framework** | Angular 21 (standalone components, signals, control flow) |
+| **Langage** | TypeScript 5.9 |
+| **Styles** | SCSS (design system avec variables CSS, light/dark) |
+| **Routing** | Angular Router (lazy loading) |
+| **Animation** | CSS transitions + `IntersectionObserver` (directive `[appReveal]`) |
+| **Fonts** | Space Grotesk · JetBrains Mono (Google Fonts) |
+| **Déploiement** | Vercel |
+
+---
+
+## Lancer le projet en local
+
+### Prérequis
+
+- **Node.js** ≥ 20
+- **npm** ≥ 10
+- **Angular CLI** (optionnel — les scripts npm suffisent)
+
+### Installation
 
 ```bash
-ng serve
+git clone https://github.com/Aly-leo/alyssa-portfolio.git
+cd alyssa-portfolio
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Démarrer le serveur de développement
 
 ```bash
-ng generate component component-name
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Puis ouvre [http://localhost:4200](http://localhost:4200) dans ton navigateur.
+Le rechargement à chaud est actif : chaque modification de code se répercute
+immédiatement à l'écran.
+
+### Construire pour la production
 
 ```bash
-ng generate --help
+npm run build
 ```
 
-## Building
+Les artefacts optimisés sont générés dans `dist/portfolio/browser/`.
 
-To build the project run:
+### Prévisualiser un build de production en local
 
 ```bash
-ng build
+npm run build && npx http-server dist/portfolio/browser -p 8080 -c-1
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+##  Structure du projet
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
+```
+src/
+├── app/
+│   ├── data/
+│   │   └── projects.ts          # Projets, stack, socials, WISTEM
+│   ├── pages/
+│   │   ├── welcome/             # Splash screen (typing effect)
+│   │   └── home/                # Portfolio principal
+│   ├── services/
+│   │   └── theme.service.ts     # Gestion light / dark
+│   ├── shared/
+│   │   ├── social-icon.ts       # Composant icônes SVG
+│   │   └── reveal.directive.ts  # Reveal au scroll
+│   ├── app.routes.ts
+│   └── app.ts
+├── styles.scss                  # Design system global (variables + thèmes)
+└── index.html
+public/
+└── img/                         # Photos (hero, projets, WISTEM)
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Personnaliser
 
-```bash
-ng e2e
-```
+Toutes les données affichées (projets, liens, socials, WISTEM…) sont
+centralisées dans **[`src/app/data/projects.ts`](src/app/data/projects.ts)**.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+## Contact
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- **Email** — [zamoalyssa@gmail.com](mailto:zamoalyssa@gmail.com)
+- **LinkedIn** — [Zamo Alyssa](https://www.linkedin.com/in/zamo-alyssa)
+- **GitHub** — [@Aly-leo](https://github.com/Aly-leo)
+- **TikTok** — [@alyssankolo](https://www.tiktok.com/@alyssankolo)
+
+---
+
+<div align="center">
+
+Fait par **Alyssa Nkolo** — Douala, Cameroun 
+
+</div>
