@@ -1,29 +1,11 @@
-/* =============================================================
-   ZONES POUR TES IMAGES — MODE D'EMPLOI
-   -------------------------------------------------------------
-   1. Dépose tes fichiers dans le dossier :   public/img/
-      (par ex.  public/img/trashgo.png  →  chemin dans le code :  'img/trashgo.png')
-
-   2. Pour chaque PROJET (tableau PROJECTS plus bas), remplace
-      la ligne  image: undefined,          // 👈 IMAGE À AJOUTER ICI
-      par        image: 'img/nom-du-fichier.png',
-
-   3. Pour la GALERIE WISTEM (constante WISTEM.photos, en bas),
-      remplace la ligne  image: undefined, // 👈 IMAGE À AJOUTER ICI
-      par        image: 'img/wistem/mon-atelier.jpg',
-
-   Tant que 'image' est undefined, un joli placeholder dégradé
-   s'affiche automatiquement — rien ne casse.
-   ============================================================= */
-
 export interface Project {
   id: string;
   title: string;
   subtitle: string;
   description: string;
-  image?: string;           // 👈 chemin de la photo (relatif à /public)
+  image?: string;           
   imageAlt?: string;
-  imageGradient?: string;   // dégradé de secours quand image est absent
+  imageGradient?: string;   
   languages: string[];
   link: string;
   linkLabel: string;
@@ -37,7 +19,7 @@ export const PROJECTS: Project[] = [
     description:
       "Ma page centrale qui regroupe tous mes liens : formations, communauté AI Hunters, WISTEM, boutique et réseaux sociaux. Design épuré, mobile-first, déployé sur Vercel.",
 
-    image: 'img/linkhub.png',
+    image: 'img/linkhub.webp',
     imageAlt: 'Aperçu du LinkHub',
     imageGradient: 'linear-gradient(135deg, #a78bfa, #7c3aed)',
 
@@ -52,8 +34,7 @@ export const PROJECTS: Project[] = [
     description:
       "Application smart pour la collecte, le tri et le suivi des déchets urbains. Cahier des charges complet, architecture front-end pensée pour l'impact environnemental et l'usage terrain au Cameroun.",
 
-    // 👇 IMAGE À AJOUTER ICI — capture TrashGo (ex : 'img/trashgo.png')
-    image: 'img/trashgo.png',
+    image: 'img/trashgo.webp',
     imageAlt: 'Aperçu TrashGo',
     imageGradient: 'linear-gradient(135deg, #10b981, #059669)',
 
@@ -69,7 +50,7 @@ export const PROJECTS: Project[] = [
       "Vitrine complète pour un restaurant camerounais : menu dynamique, commandes, panier, consommation d'API REST via services Angular. Navbar en verre dépoli, design chaleureux.",
 
     
-    image: 'img/delices-douala.png',
+    image: 'img/delices-douala.webp',
     imageAlt: 'Aperçu Délices de Douala',
     imageGradient: 'linear-gradient(135deg, #f97316, #ea580c)',
 
@@ -199,8 +180,8 @@ export const CONTENT_PLATFORMS: ContentPlatform[] = [
 
 export interface WistemPhoto {
   alt: string;
-  image?: string;      // 👈 chemin relatif à /public (ex : 'img/wistem/atelier.jpg')
-  gradient: string;    // dégradé affiché tant qu'aucune photo n'est fournie
+  image?: string;      
+  gradient: string;    
 }
 
 export const WISTEM = {
@@ -210,12 +191,7 @@ export const WISTEM = {
     "WISTEM Cameroon est une communauté engagée à promouvoir la présence des femmes dans les sciences, la technologie, l'ingénierie et les mathématiques. Je m'y implique activement pour accompagner les jeunes filles à travers des ateliers, du mentorat et de la visibilité — parce qu'une tech inclusive commence par l'exemple.",
   values: ['Mentorat', 'Ateliers', 'Networking', 'Rôles modèles'],
 
-  /* ================================================================
-     GALERIE PHOTOS WISTEM
-     ----------------------------------------------------------------
-     Dépose tes photos dans  public/img/wistem/
-     puis remplace  image: undefined  par  image: 'img/wistem/xxx.jpg'
-     ================================================================ */
+  
   photos: [
     {
       alt: 'Atelier WISTEM',
@@ -246,11 +222,4 @@ export const WISTEM = {
   ],
 };
 
-/* =============================================================
-   👇 PHOTO DU HERO (grand portrait rond du haut de page)
-   -------------------------------------------------------------
-   Le fichier utilisé est :   public/img/alyssa.jpg
-   Pour la remplacer, écrase simplement ce fichier par ta nouvelle
-   photo (garde le même nom), ou change la valeur src="img/alyssa.jpg"
-   dans  src/app/pages/home/home.html  (ligne du <img> de .photo).
-   ============================================================= */
+
