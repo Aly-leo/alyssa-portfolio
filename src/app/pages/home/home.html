@@ -358,9 +358,7 @@
       </p>
 
       <div class="contact__actions">
-        <a class="btn btn--primary big" href="mailto:zamoalyssa@gmail.com">
-          zamoalyssa&#64;gmail.com<span class="arrow">→</span>
-        </a>
+        <app-contact-form [appReveal]="60"></app-contact-form>
         <div class="contact__socials">
           @for (s of socials; track s.name) {
             <a [href]="s.url" target="_blank" rel="noopener" class="mini">

@@ -3,11 +3,12 @@ import { PROJECTS, STACK, SOCIALS, CONTENT_PLATFORMS, WISTEM } from '../../data/
 import { ThemeService } from '../../services/theme.service';
 import { SocialIcon } from '../../shared/social-icon';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { ContactForm } from './contact-form/contact-form';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [SocialIcon, RevealDirective],
+  imports: [SocialIcon, RevealDirective, ContactForm],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

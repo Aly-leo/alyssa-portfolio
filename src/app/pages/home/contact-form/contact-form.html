@@ -1,0 +1,88 @@
+<form class="cform" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <div class="cform__row">
+    <div class="cform__field">
+      <label for="cf-name">Nom</label>
+      <input
+        id="cf-name"
+        type="text"
+        formControlName="name"
+        placeholder="Ton nom"
+        autocomplete="name"
+        [class.error]="isInvalid('name')"
+      />
+      @if (isInvalid('name')) {
+        <span class="cform__hint">Deux caractères minimum.</span>
+      }
+    </div>
+
+    <div class="cform__field">
+      <label for="cf-email">Email</label>
+      <input
+        id="cf-email"
+        type="email"
+        formControlName="email"
+        placeholder="ton@email.com"
+        autocomplete="email"
+        [class.error]="isInvalid('email')"
+      />
+      @if (isInvalid('email')) {
+        <span class="cform__hint">Adresse email invalide.</span>
+      }
+    </div>
+  </div>
+
+  <div class="cform__field">
+    <label for="cf-message">Message</label>
+    <textarea
+      id="cf-message"
+      formControlName="message"
+      placeholder="Dis-moi ce sur quoi tu aimerais qu'on discute…"
+      rows="5"
+      [class.error]="isInvalid('message')"
+    ></textarea>
+    @if (isInvalid('message')) {
+      <span class="cform__hint">Message trop court (10 caractères minimum).</span>
+    }
+  </div>
+
+  <!-- Honeypot invisible : les bots le remplissent, les humains ne le voient jamais -->
+  <input
+    class="cform__hp"
+    type="text"
+    formControlName="website"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+  />
+
+  <div class="cform__actions">
+    <button
+      type="submit"
+      class="btn btn--primary big"
+      [disabled]="status() === 'sending'"
+    >
+      @switch (status()) {
+        @case ('sending') { <span>Envoi en cours…</span> }
+        @case ('ok') { <span>Message envoyé ✓</span> }
+        @default { <span>Envoyer le message</span><span class="arrow">→</span> }
+      }
+    </button>
+
+    <a class="cform__mailto" href="mailto:zamoalyssa@gmail.com">
+      ou écris-moi directement
+    </a>
+  </div>
+
+  @if (status() === 'ok') {
+    <div class="cform__feedback cform__feedback--ok">
+      <b>Merci !</b> Ton message est bien parti — je reviens vers toi sous 48 h.
+      <button type="button" class="link" (click)="reset()">Envoyer un autre message</button>
+    </div>
+  }
+  @if (status() === 'error') {
+    <div class="cform__feedback cform__feedback--err">
+      <b>Aïe.</b> {{ errorMsg() }}
+      <button type="button" class="link" (click)="reset()">Réessayer</button>
+    </div>
+  }
+</form>

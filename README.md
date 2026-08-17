@@ -124,6 +124,51 @@ centralisées dans **[`src/app/data/projects.ts`](src/app/data/projects.ts)**.
 
 ---
 
+## Formulaire de contact (Brevo + Vercel)
+
+Le formulaire de la section Contact envoie **deux emails automatiques** via
+[Brevo](https://www.brevo.com/) : une notification pour moi et une confirmation
+au visiteur. La clé API vit **uniquement côté serveur**, dans une fonction
+serverless Vercel — jamais dans le code Angular.
+
+### Configuration Brevo (une seule fois)
+
+1. Crée un compte gratuit sur [brevo.com](https://www.brevo.com/) et vérifie ton email.
+2. Vérifie une **adresse expéditrice** dans _Senders, Domains & Dedicated IPs_ → _Senders_.
+3. Génère une **clé API** sur [app.brevo.com/settings/keys/api](https://app.brevo.com/settings/keys/api)
+   (elle commence par `xkeysib-…`). **Copie-la immédiatement** — elle ne s'affiche qu'une fois.
+
+### Variables d'environnement
+
+**En production (Vercel)** — projet → _Settings_ → _Environment Variables_ :
+
+| Variable | Valeur |
+|---|---|
+| `BREVO_API_KEY` | Ta clé `xkeysib-…` |
+| `SENDER_EMAIL` | L'expéditeur vérifié dans Brevo |
+| `OWNER_EMAIL` | Adresse où tu reçois les notifications |
+
+> ⚠️ Les variables ne sont prises en compte qu'au **prochain déploiement**.
+> Fais un `git push` ou clique _Redeploy_ dans Vercel après les avoir ajoutées.
+
+**En local** — copie `.env.local.example` en `.env.local` et remplis les valeurs.
+Le fichier `.env.local` est ignoré par Git.
+
+### Tester le formulaire en local
+
+`npm start` (`ng serve`) ne lance **pas** les fonctions `/api`. Pour tester
+formulaire + fonction serverless ensemble en local :
+
+```bash
+npm install -g vercel
+vercel login
+vercel dev
+```
+
+Suivre les envois : [Brevo](https://app.brevo.com) → _Transactional_ → _Logs / Statistics_.
+
+---
+
 ## Contact
 
 - **Email** — [zamoalyssa@gmail.com](mailto:zamoalyssa@gmail.com)

@@ -45,3 +45,11 @@ Thumbs.db
 
 # Claude Code (local tooling only)
 .claude/
+
+# Vercel local dev
+.vercel/
+
+# Variables d'environnement (contient la clé API Brevo)
+.env
+.env.local
+.env.*.local
