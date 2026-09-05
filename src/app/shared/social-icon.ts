@@ -54,6 +54,13 @@ import { Component, Input } from '@angular/core';
           <line x1="10" y1="14" x2="21" y2="3"/>
         </svg>
       }
+      @case ('download') {
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      }
       @case ('git') {
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M23.55 11.23L12.77.45a1.55 1.55 0 0 0-2.19 0L8.39 2.64l2.77 2.77a1.83 1.83 0 0 1 2.31 2.33l2.67 2.67a1.83 1.83 0 1 1-1.1 1.03l-2.5-2.49v6.55a1.83 1.83 0 1 1-1.51-.05V8.85a1.83 1.83 0 0 1-.99-2.4L7.32 3.7.45 10.58a1.55 1.55 0 0 0 0 2.19l10.78 10.78a1.55 1.55 0 0 0 2.19 0l10.13-10.13a1.55 1.55 0 0 0 0-2.19"/>

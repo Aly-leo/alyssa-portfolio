@@ -144,6 +144,15 @@
           <a class="btn btn--primary" (click)="scrollTo('projects'); $event.preventDefault()" href="#projects">
             Voir mes projets<span class="arrow">→</span>
           </a>
+          <a
+            class="btn btn--outline"
+            href="cv-alyssa-nkolo.pdf"
+            download="Alyssa-Nkolo-CV.pdf"
+            aria-label="Télécharger le CV d'Alyssa Nkolo (PDF)"
+          >
+            <app-social-icon name="download" style="width: 16px; height: 16px;"></app-social-icon>
+            <span>Télécharger mon CV</span>
+          </a>
           <a class="btn btn--ghost" (click)="scrollTo('contact'); $event.preventDefault()" href="#contact">
             Discutons
           </a>

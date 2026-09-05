@@ -468,6 +468,19 @@
     border-color: var(--border-strong);
     &:hover { background: var(--surface-hover); border-color: var(--violet); color: var(--violet); }
   }
+  &--outline {
+    background: var(--surface);
+    color: var(--violet);
+    border-color: var(--violet);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    &:hover {
+      background: var(--violet-soft);
+      box-shadow: 0 10px 30px var(--violet-glow);
+      transform: translateY(-2px);
+    }
+  }
+  :root[data-theme='dark'] &--outline { color: var(--violet-bright); }
   &.big { padding: 18px 32px; font-size: 16px; }
 }
 
